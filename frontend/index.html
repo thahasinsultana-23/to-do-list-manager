@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TaskFlow | To Do List Manager</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2 class="brand">TaskFlow</h2>
+      <p class="muted">YOUR WORKSPACE</p>
+
+      <button class="nav active" data-filter="all">All Tasks</button>
+      <button class="nav" data-filter="active">Active Tasks</button>
+      <button class="nav" data-filter="completed">Completed</button>
+
+      <div class="sidebar-note">
+        <strong>Stay organized.</strong>
+        <p>One task at a time.</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="muted">YOUR PERSONAL WORKSPACE</p>
+          <h1>To Do List Manager</h1>
+          <p class="subtitle">Plan your work. Make progress every day.</p>
+        </div>
+        <span class="status">● Ready to focus</span>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card">
+          <span>Total tasks</span>
+          <strong id="totalCount">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>In progress</span>
+          <strong id="activeCount">0</strong>
+        </article>
+        <article class="stat-card">
+          <span>Completed</span>
+          <strong id="completedCount">0</strong>
+        </article>
+      </section>
+
+      <section class="task-panel">
+        <div class="panel-heading">
+          <div>
+            <h2 id="listTitle">All Tasks</h2>
+            <p class="muted">Create and manage your daily tasks.</p>
+          </div>
+          <button id="showForm" class="primary">+ Add Task</button>
+        </div>
+
+        <form id="taskForm" class="task-form hidden">
+          <label for="title">Task title *</label>
+          <input id="title" maxlength="120" required
+                 placeholder="Example: Complete my assignment">
+
+          <label for="description">Description</label>
+          <textarea id="description" rows="3"
+                    placeholder="Add some details..."></textarea>
+
+          <div class="form-row">
+            <div>
+              <label for="dueDate">Due date</label>
+              <input id="dueDate" type="date">
+            </div>
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="cancelForm" class="secondary">
+              Cancel
+            </button>
+            <button type="submit" id="saveButton" class="primary">
+              Save Task
+            </button>
+          </div>
+        </form>
+
+        <div class="toolbar">
+          <input id="search" type="search" placeholder="Search tasks...">
+          <select id="sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="priority">Highest priority</option>
+          </select>
+        </div>
+
+        <p id="message" class="message" role="status"></p>
+        <div id="taskList" class="task-list"></div>
+      </section>
+
+      <footer>TaskFlow · Built with HTML, CSS, JavaScript and Supabase</footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
